@@ -1,0 +1,57 @@
+<div class="row">
+
+    <div class="col-md-4" *ngFor = "let hero of allHeroes">
+        <nb-card>
+            <nb-card-header class="center">
+                <div>
+                    <h4>{{hero.name}}</h4>
+                    <img class="heroimg" [src]="imgUrl + hero.skin">
+                    <p><i>{{hero.description}}</i></p>
+                </div>
+            </nb-card-header>
+            <nb-card-body class="center">
+                <div class="stats row">
+                    <div class="col-md-3 center">
+                        FOR
+                        <div>{{hero.strength}}</div>
+                    </div>
+                    <div class="col-md-3 center">
+                        INT
+                        <div>{{hero.intelligence}}</div>
+                    </div>
+                    <div class="col-md-3 center">
+                        CHR
+                        <div>{{hero.charisma}}</div>
+                    </div>
+                    <div class="col-md-3 center">
+                        CHN
+                        <div>{{hero.luck}}</div>
+                    </div>
+                </div>
+                <div class="skills spaced">
+                    <div *ngFor = "let skill of hero.skills">
+                        <div>    
+                            <img [src]="imgUrl + skill.skin">
+                        </div>
+                        <div class="important mini">
+                            {{skill.name}}
+                        </div>
+                        <div class="score">
+                            {{skill.score}}
+                        </div>
+                        <div class="mini">
+                            {{skill.archetype1}}
+                        </div>
+                        <div class="mini">
+                            {{skill.archetype2}}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img class="heroimg" [src]="imgUrl + hero.faction.faction_skin">
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div> 
+    
+</div>
