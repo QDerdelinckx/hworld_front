@@ -1,0 +1,17 @@
+<div class="row"> 
+    <div class="col-md-2 center" *ngFor = "let item of allItems">
+        <nb-card>
+            <nb-card-header>
+                    <img [src]="imgUrl + item.skin">
+                <div class="small">
+                    {{item.name}}
+                </div>
+            </nb-card-header>
+            <nb-card-body class="contents">
+                    <div class="bonus" *ngFor = "let bonus of item.bonuses">
+                        {{bonus.bonus | strVal}} {{bonus.affected}}
+                    </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>   

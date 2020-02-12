@@ -15,7 +15,8 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.items = [
       {title: 'Accueil', icon:'home', link: '/home'},
-      {title: 'Héros', icon:'book-open', link: '/heroes'}
+      {title: 'Héros', icon:'book-open', link: '/heroes'},
+      {title: 'Matériel', icon:'shopping-bag', link:'/items'}
     ]
   }
 
