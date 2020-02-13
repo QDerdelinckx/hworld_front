@@ -3,7 +3,7 @@
 }
 
 .small{
-    margin-top:15px;
+    margin-top: 15px;
     font-size: 12px;
     font-weight: bold;
 }
@@ -14,5 +14,13 @@
 
 .bonus{
     font-style: italic;
-    margin:5px 0px;
+    margin: 5px 0px;
+}
+
+.bonuscard{
+    height: 100px;
+}
+
+.bordered{
+    border: 3px solid rgb(28, 28, 49);
 }

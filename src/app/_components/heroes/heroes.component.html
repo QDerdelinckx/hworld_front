@@ -5,7 +5,7 @@
             <nb-card-header class="center">
                 <div>
                     <h4>{{hero.name}}</h4>
-                    <img class="heroimg" [src]="imgUrl + hero.skin">
+                    <img class="bordered heroimg" [src]="imgUrl + hero.skin">
                     <p><i>{{hero.description}}</i></p>
                 </div>
             </nb-card-header>
@@ -31,7 +31,7 @@
                 <div class="skills spaced">
                     <div *ngFor = "let skill of hero.skills">
                         <div>    
-                            <img [src]="imgUrl + skill.skin">
+                            <img class="bordered" [src]="imgUrl + skill.skin">
                         </div>
                         <div class="important mini">
                             {{skill.name}}
@@ -48,7 +48,13 @@
                     </div>
                 </div>
                 <div>
-                    <img class="heroimg" [src]="imgUrl + hero.faction.faction_skin">
+                    <img class="factionimg" [src]="imgUrl + hero.faction.faction_skin">
+                </div>
+                <div>
+                    <button nbButton icon="shopping-cart">
+                        <nb-icon icon="shopping-cart-outline"></nb-icon>
+                        Recruter pour {{hero.price}}
+                    </button>
                 </div>
             </nb-card-body>
         </nb-card>

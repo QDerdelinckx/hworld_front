@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbSidebarService } from '@nebular/theme';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'hworld';
+  get isConnected(): boolean {
+    return localStorage.getItem('TOKEN') != null;
+  }
+
+  localStorage = localStorage;
+  constructor(
+    private router: Router
+    ){
+
+    }
+
 }

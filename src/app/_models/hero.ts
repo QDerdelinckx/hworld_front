@@ -13,4 +13,5 @@ export interface heroModel{
     luck: number;
     skills: skillModel[];
     faction: factionModel;
+    price: number;
 }

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule, NbButtonModule, NbIconModule, NbActionsModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './_components/nav/nav.component';
@@ -33,7 +33,10 @@ import { StrValPipe } from './_pipes/str-val.pipe';
     NbMenuModule.forRoot(),
     HttpClientModule,
     NbCardModule,
-    NbAccordionModule
+    NbAccordionModule,
+    NbButtonModule,
+    NbIconModule,
+    NbActionsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
