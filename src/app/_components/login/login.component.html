@@ -1,0 +1,13 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="form-group">
+        <input nbInput type="text" 
+        formControlName="nickname">
+    </div>
+    <div class="form-group">
+        <input nbInput type="password"    
+        formControlName="password">
+    </div>
+    <div class="form-group">
+        <input nbButton type="submit" value="Se connecter">
+    </div>
+</form>

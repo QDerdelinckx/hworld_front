@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule, NbButtonModule, NbIconModule, NbActionsModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule, NbButtonModule, NbIconModule, NbActionsModule, NbDialogModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './_components/nav/nav.component';
@@ -12,6 +12,8 @@ import { HeroesComponent } from './_components/heroes/heroes.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ItemsComponent } from './_components/items/items.component';
 import { StrValPipe } from './_pipes/str-val.pipe';
+import { LoginComponent } from './_components/login/login.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { StrValPipe } from './_pipes/str-val.pipe';
     HomeComponent,
     HeroesComponent,
     ItemsComponent,
-    StrValPipe
+    StrValPipe,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,11 @@ import { StrValPipe } from './_pipes/str-val.pipe';
     NbAccordionModule,
     NbButtonModule,
     NbIconModule,
-    NbActionsModule
+    NbActionsModule,
+    NbSidebarModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NbDialogModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

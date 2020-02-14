@@ -1,6 +1,9 @@
 <nb-layout>
 
   <nb-layout-header fixed>
+      <nb-actions *ngIf="!isConnected">
+        <nb-action icon="log-in" (click)="login()">S'identifier</nb-action>
+      </nb-actions>
   </nb-layout-header>
 
   <nb-sidebar>
