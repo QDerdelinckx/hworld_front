@@ -21,9 +21,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
-      'nickname': new FormControl(),
+      'username': new FormControl(),
       'password': new FormControl()
     })
+  }
+
+  isConnected(): boolean{
+    return this.secService.isConnected();
   }
 
   login() {
@@ -31,9 +35,9 @@ export class LoginComponent implements OnInit {
     let json = this.loginForm.value;
     this.secService.login(json).subscribe(
       (token) => { 
-        localStorage.setItem('TOKEN', token);
+        localStorage.setItem('TOKEN', JSON.stringify(token));
         this.router.navigateByUrl('home');
-      },
+      }, 
       (error) => {
         console.log(error);
       },

@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NbSidebarService } from '@nebular/theme';
 import { Router } from '@angular/router';
+import { UserService } from './_services/user.service';
+import { userModel } from './_models/user';
+import * as jwt_decode from "jwt-decode";
 
 @Component({
   selector: 'app-root',
@@ -10,19 +13,33 @@ import { Router } from '@angular/router';
 export class AppComponent {
   title = 'hworld';
 
-  get isConnected(): boolean {
-    return localStorage.getItem('TOKEN') != null;
-  }
+  currentUser: userModel;
 
-  localStorage = localStorage;
   constructor(
-    private sidebarService:  NbSidebarService,
+    private userService: UserService,
+    private sidebarService: NbSidebarService,
     private router: Router
-    ){}
+    ){
+      if(!userService.isConnected()){
+        this.router.navigateByUrl("/login");
+      } else {
+        console.log(userService.getToken());
+        this.currentUser = userService.getToken();
+      }
+    }
 
-  login(){
-    this.router.navigateByUrl("/login");
-  }
+    isConnected(): boolean {
+      return this.userService.isConnected();
+    }
+
+    login(){
+      this.userService.login;
+    }
+
+    logout(){
+      localStorage.clear();
+      this.router.navigateByUrl("/login");
+    }
 
 }
 

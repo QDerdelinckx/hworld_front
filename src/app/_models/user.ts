@@ -1,6 +1,6 @@
 export interface userModel {
   id: number;
-  nickname: string;
+  username: string;
   email: string;
   password: string;
   gold: number;

@@ -20,7 +20,6 @@ export class ItemsComponent implements OnInit {
     this.imgUrl = "../../../assets/images/";
     this.itemService.context$.subscribe(list => {
       this.allItems = list;
-      console.log(this.allItems);
     });
     this.itemService.refresh();
   }

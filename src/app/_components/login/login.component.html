@@ -1,13 +1,28 @@
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-    <div class="form-group">
-        <input nbInput type="text" 
-        formControlName="nickname">
+<div class="center">
+   <img class ="welcome" src="../../../assets/images/welcome.png">
+
+   <div *ngIf="!isConnected()">
+        <div class="introtext">
+            <h4>Bienvenue</h4>
+            <p>dans le monde fantastique de Hector !<br>
+                De nombreuses aventures vous attendent !</p>
+                <p>Veuillez d'abord vous identifiez :</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+            <div class="form-group">
+                <label>Votre identifiant :</label><br>
+                <input nbInput type="text" 
+                formControlName="username">
+            </div>
+            <div class="form-group">
+                <label>Votre mot de passe :</label><br>
+                <input nbInput type="password"    
+                formControlName="password">
+            </div>
+            <div class="form-group">
+                <input nbButton type="submit" value="Se connecter">
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <input nbInput type="password"    
-        formControlName="password">
-    </div>
-    <div class="form-group">
-        <input nbButton type="submit" value="Se connecter">
-    </div>
-</form>
+</div> 

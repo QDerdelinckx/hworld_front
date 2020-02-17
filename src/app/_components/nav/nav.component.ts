@@ -9,10 +9,16 @@ import { NbMenuItem } from '@nebular/theme';
 export class NavComponent implements OnInit {
 
   items: NbMenuItem[];
+  localStorage = localStorage;
+
+  get isConnected(): boolean {
+    return localStorage.getItem('TOKEN') != null;
+  }
 
   constructor() { }
 
   ngOnInit(): void {
+    if(!this.isConnected){}
     this.items = [
       {title: 'Accueil', icon:'home', link: '/home'},
       {title: 'Marché', icon:'shopping-cart', children:[

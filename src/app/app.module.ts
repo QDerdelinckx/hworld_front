@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './_components/nav/nav.component';
 import { HomeComponent } from './_components/home/home.component';
 import { HeroesComponent } from './_components/heroes/heroes.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { ItemsComponent } from './_components/items/items.component';
 import { StrValPipe } from './_pipes/str-val.pipe';
 import { LoginComponent } from './_components/login/login.component';

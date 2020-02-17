@@ -1,12 +1,22 @@
 <nb-layout>
 
-  <nb-layout-header fixed>
-      <nb-actions *ngIf="!isConnected">
-        <nb-action icon="log-in" (click)="login()">S'identifier</nb-action>
-      </nb-actions>
+  <nb-layout-header fixed *ngIf="isConnected()">
+      <div class="align">
+        <div>
+          <nb-action icon="power-outline" (click)="logout()"></nb-action>
+        </div>
+        <div>
+          <nb-icon icon="pin-outline"></nb-icon>
+          {{currentUser.gold}}
+        </div>
+        <div>
+          <nb-icon icon="loader-outline"></nb-icon>
+          {{currentUser.crystals}}
+        </div>
+      </div>
   </nb-layout-header>
 
-  <nb-sidebar>
+  <nb-sidebar *ngIf="isConnected()">
     <app-nav></app-nav>
   </nb-sidebar>
 
@@ -14,7 +24,7 @@
     <router-outlet></router-outlet>
   </nb-layout-column>
 
-  <nb-layout-footer fixed>
+  <nb-layout-footer fixed *ngIf="isConnected()">
   <!-- Insert footer here -->
   </nb-layout-footer>
 

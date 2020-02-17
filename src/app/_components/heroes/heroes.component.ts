@@ -20,7 +20,6 @@ export class HeroesComponent implements OnInit {
     this.imgUrl = "../../../assets/images/";
     this.heroService.context$.subscribe(list => {
       this.allHeroes = list;
-      console.log(this.allHeroes);
     });
     this.heroService.refresh();
   }
