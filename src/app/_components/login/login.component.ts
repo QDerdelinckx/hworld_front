@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = new FormGroup({
       'username': new FormControl(),
       'password': new FormControl()
-    })
+    });
   }
 
   isConnected(): boolean{

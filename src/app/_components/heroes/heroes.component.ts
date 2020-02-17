@@ -21,7 +21,7 @@ export class HeroesComponent implements OnInit {
     this.heroService.context$.subscribe(list => {
       this.allHeroes = list;
     });
-    this.heroService.refresh();
+    this.heroService.getAllHeroes();
   }
 
 }

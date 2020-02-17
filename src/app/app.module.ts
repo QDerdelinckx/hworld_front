@@ -14,6 +14,7 @@ import { ItemsComponent } from './_components/items/items.component';
 import { StrValPipe } from './_pipes/str-val.pipe';
 import { LoginComponent } from './_components/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MyheroesComponent } from './_components/myheroes/myheroes.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     HeroesComponent,
     ItemsComponent,
     StrValPipe,
-    LoginComponent
+    LoginComponent,
+    MyheroesComponent
   ],
   imports: [
     BrowserModule,

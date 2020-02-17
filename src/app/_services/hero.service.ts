@@ -19,8 +19,13 @@ export class HeroService {
     this._context$ = new BehaviorSubject<heroModel[]>([]);
    }
 
-   refresh():void {
+  getAllHeroes():void {
     this.httpClient.get<heroModel[]>(environment.apiEndPoint + '/hero')
+    .subscribe(x => this._context$.next(x));
+  }
+
+  getHeroesByPlayerId(playerId: number):void {
+    this.httpClient.get<heroModel[]>(environment.apiEndPoint + '/user/' + playerId + '/heroes')
     .subscribe(x => this._context$.next(x));
   }
 
