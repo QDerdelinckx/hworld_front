@@ -51,7 +51,9 @@
                     <img class="factionimg" [src]="imgUrl + hero.faction.faction_skin">
                 </div>
                 <div>
-                    <button nbButton (click)="buy(hero.id, hero.price)">
+                    <button nbButton 
+                    (click)="buy(hero.id, hero.price)"
+                    [disabled]="alreadyowned(hero.name)">
                         <nb-icon icon="shopping-cart-outline"></nb-icon>
                         Recruter pour {{hero.price}}
                     </button>

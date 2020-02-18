@@ -1,3 +1,6 @@
+import { skillModel } from './skill';
+import { factionModel } from './faction';
+
 export interface playingHeroModel {
   id: number;
   skin: string;
@@ -8,4 +11,6 @@ export interface playingHeroModel {
   intelligence: number;
   charisma: number;
   luck: number;
+  skills: skillModel[];
+  faction: factionModel;
 }

@@ -4,6 +4,8 @@ import { HeroService } from 'src/app/_services/hero.service';
 import { HttpClient } from '@angular/common/http';
 import { UserService } from 'src/app/_services/user.service';
 import { userModel } from 'src/app/_models/user';
+import { playingHeroModel } from 'src/app/_models/playingHero';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-heroes',
@@ -14,12 +16,14 @@ export class HeroesComponent implements OnInit {
 
   imgUrl: String;
   allHeroes: heroModel[];
+  myHeroes: playingHeroModel[];
   currentUser: userModel;
 
   constructor(
     private userService: UserService,
     private heroService: HeroService,
-    private httpClient: HttpClient 
+    private httpClient: HttpClient,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -29,11 +33,24 @@ export class HeroesComponent implements OnInit {
       this.allHeroes = list;
     });
     this.heroService.getAllHeroes();
+    this.heroService.playerHeroContext$.subscribe(list => {
+      this.myHeroes = list;
+    });
+
   }
 
   buy(heroId: number, userId: number): void {
     userId = this.currentUser.id;
     this.httpClient.post<null>('http://localhost:8080/shop/buy/' + heroId + "/" + userId, null).subscribe();
+  }
+
+  alreadyowned(name: string): boolean{
+    for(let i=0; i<this.myHeroes.length; i++){
+      if(this.myHeroes[i].name == name){
+        return true;
+      }
+    }
+    return false;
   }
 
 }

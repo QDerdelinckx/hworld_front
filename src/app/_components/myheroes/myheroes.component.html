@@ -28,6 +28,28 @@
                         <div>{{hero.luck}}</div>
                     </div>
                 </div>
+                <div class="skills spaced">
+                    <div *ngFor = "let skill of hero.skills">
+                        <div>    
+                            <img class="bordered" [src]="imgUrl + skill.skin">
+                        </div>
+                        <div class="important mini">
+                            {{skill.name}}
+                        </div>
+                        <div class="score">
+                            {{skill.score}}
+                        </div>
+                        <div class="mini">
+                            {{skill.archetype1}}
+                        </div>
+                        <div class="mini">
+                            {{skill.archetype2}}
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <img class="factionimg" [src]="imgUrl + hero.faction.faction_skin">
+                </div>
             </nb-card-body>
         </nb-card>
     </div> 

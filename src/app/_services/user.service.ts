@@ -45,4 +45,8 @@ export class UserService {
     return null;
   }
 
+  getUser(): Observable<userModel>{
+    return this.getToken();
+  }
+
 }

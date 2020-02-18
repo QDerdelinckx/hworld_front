@@ -26,13 +26,16 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.items = [
-      {title: 'Accueil', icon:'home', link: '/home'},
+      {title: 'Accueil', icon:'globe-2', link: '/home'},
       {title: 'QG de ' + this.currentUser.username, icon:'home', children:[
-        {title: 'Mes héros', icon:'book-open', link: '/myheroes'}
+        {title: 'Mes héros', icon:'award', link: '/myheroes'},
+        {title: 'Mon inventaire', icon:'briefcase', link:''},
+        {title: 'Mon équipage', icon:'car', link:''},
+        {title: 'Journal de Bord', icon:'book-open', link:''}
       ]},
       {title: 'Marché', icon:'shopping-cart', children:[
-        {title: 'Héros', icon:'book-open', link: '/heroes'},
-        {title: 'Matériel', icon:'shopping-bag', link:'/items'}
+        {title: 'Héros', icon:'award', link: '/heroes'},
+        {title: 'Matériel', icon:'cube', link:'/items'}
       ]}
     ]
   }
