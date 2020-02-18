@@ -23,7 +23,6 @@ export class AppComponent {
       if(!userService.isConnected()){
         this.router.navigateByUrl("/login");
       } else {
-        console.log(userService.getToken());
         this.currentUser = userService.getToken();
       }
     }
