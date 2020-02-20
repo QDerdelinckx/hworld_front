@@ -30,7 +30,7 @@ export class NavComponent implements OnInit {
       {title: 'QG de ' + this.currentUser.username, icon:'home', children:[
         {title: 'Mes héros', icon:'award', link: '/myheroes'},
         {title: 'Mon inventaire', icon:'briefcase', link:''},
-        {title: 'Mon équipage', icon:'car', link:''},
+        {title: 'Mon équipage', icon:'car', link:'/mycrew'},
         {title: 'Journal de Bord', icon:'book-open', link:''}
       ]},
       {title: 'Marché', icon:'shopping-cart', children:[

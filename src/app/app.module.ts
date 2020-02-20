@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule, NbButtonModule, NbIconModule, NbActionsModule, NbDialogModule } from '@nebular/theme';
+import { NbThemeModule, NbLayoutModule, NbSidebarModule, NbMenuModule, NbCardModule, NbFlipCardComponent, NbAccordionModule, NbButtonModule, NbIconModule, NbActionsModule, NbDialogModule, NbSelectComponent, NbSelectModule } from '@nebular/theme';
 import { NbEvaIconsModule } from '@nebular/eva-icons';
 import { AppRoutingModule } from './app-routing.module';
 import { NavComponent } from './_components/nav/nav.component';
@@ -15,6 +15,7 @@ import { StrValPipe } from './_pipes/str-val.pipe';
 import { LoginComponent } from './_components/login/login.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MyheroesComponent } from './_components/myheroes/myheroes.component';
+import { MyCrewComponent } from './_components/my-crew/my-crew.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MyheroesComponent } from './_components/myheroes/myheroes.component';
     ItemsComponent,
     StrValPipe,
     LoginComponent,
-    MyheroesComponent
+    MyheroesComponent,
+    MyCrewComponent
   ],
   imports: [
     BrowserModule,
@@ -42,6 +44,7 @@ import { MyheroesComponent } from './_components/myheroes/myheroes.component';
     NbButtonModule,
     NbIconModule,
     NbActionsModule,
+    NbSelectModule,
     NbSidebarModule,
     ReactiveFormsModule,
     FormsModule,
