@@ -3,6 +3,7 @@ import { playingHeroModel } from 'src/app/_models/playingHero';
 import { userModel } from 'src/app/_models/user';
 import { HeroService } from 'src/app/_services/hero.service';
 import { UserService } from 'src/app/_services/user.service';
+import { roleCrewModel } from 'src/app/_models/roleCrew';
 
 @Component({
   selector: 'app-my-crew',
@@ -14,8 +15,8 @@ export class MyCrewComponent implements OnInit {
   imgUrl: String;
   myHeroes: playingHeroModel[];
   currentUser: userModel;
-
-  listRole : String[];
+  selectRoleModel : roleCrewModel;
+  listRole : roleCrewModel[];
   constructor(private heroService: HeroService,
     private userService: UserService) {
       this.currentUser = userService.getToken();
@@ -26,20 +27,28 @@ export class MyCrewComponent implements OnInit {
       this.imgUrl = "../../../assets/images/";
       this.heroService.playerHeroContext$.subscribe(list => {
         this.myHeroes = list;
+
+      this.heroService.roleCrewContext$.subscribe(list => {
+        this.listRole = list;
+        console.log(this.listRole);
+      })
+        
       });
       this.heroService.getHeroesByPlayerId(this.currentUser.id);
-
-      this.listRole = ["a","b","c"];
+      this.heroService.getAllCrewRole();
+      this.selectRoleModel = null;
     }
 
-    selectRole ()
+    selectRole (event : roleCrewModel)
     {
-
+      this.selectRoleModel = event;
     }
 
-    attributeRole()
+    addRole(i : playingHeroModel)
     {
-      
+      i.roleCrew = this.selectRoleModel;
+      console.log(i);
+      this.heroService.addRoleCrew(i).subscribe();
     }
 
 }

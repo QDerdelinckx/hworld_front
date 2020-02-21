@@ -1,22 +1,23 @@
 <div class="row">
 
-    <div class="col-md-4" *ngFor = "let hero of myHeroes">
+    <div class="col-md-4" *ngFor = "let hero of myHeroes" >
         <nb-card>
             <nb-card-header class="center">
-                <div>
+                <div >
                     <h4>{{hero.name}}</h4>
                     <img class="bordered heroimg" [src]="imgUrl + hero.skin">
                     <p><i>{{hero.description}}</i></p>
-                </div>
+                    <div *ngIf="hero.roleCrew">{{hero.roleCrew.name}}</div>
+                </div>  
             </nb-card-header>
             <nb-card-body class="center">
                 <div>
-                <nb-select  (selectedChange)="selectRole()">
-                    <nb-option *ngFor="let i of listRole" [value]="i">{{i}}</nb-option>
+                <nb-select  (selectedChange)="selectRole($event)">
+                    <nb-option *ngFor="let i of listRole" [value]="i">{{i.name}}</nb-option>
                     </nb-select>
                 </div>
                 <div>
-                    <button nbButton status="success">Add role</button>
+                    <button nbButton status="success" (click)="addRole(hero)">Add role</button>
                 </div>
             </nb-card-body>
         </nb-card>
