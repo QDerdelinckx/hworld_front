@@ -4,6 +4,7 @@ import { userModel } from 'src/app/_models/user';
 import { HeroService } from 'src/app/_services/hero.service';
 import { UserService } from 'src/app/_services/user.service';
 import { roleCrewModel } from 'src/app/_models/roleCrew';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-my-crew',
@@ -17,6 +18,8 @@ export class MyCrewComponent implements OnInit {
   currentUser: userModel;
   selectRoleModel : roleCrewModel;
   listRole : roleCrewModel[];
+  selectHero : playingHeroModel;
+
   constructor(private heroService: HeroService,
     private userService: UserService) {
       this.currentUser = userService.getToken();
@@ -27,16 +30,17 @@ export class MyCrewComponent implements OnInit {
       this.imgUrl = "../../../assets/images/";
       this.heroService.playerHeroContext$.subscribe(list => {
         this.myHeroes = list;
+      });
 
       this.heroService.roleCrewContext$.subscribe(list => {
         this.listRole = list;
-        console.log(this.listRole);
-      })
-        
       });
+        
       this.heroService.getHeroesByPlayerId(this.currentUser.id);
       this.heroService.getAllCrewRole();
       this.selectRoleModel = null;
+      this.selectHero = null;
+
     }
 
     selectRole (event : roleCrewModel)
@@ -44,11 +48,14 @@ export class MyCrewComponent implements OnInit {
       this.selectRoleModel = event;
     }
 
-    addRole(i : playingHeroModel)
+    addRole(h : playingHeroModel)
     {
-      i.roleCrew = this.selectRoleModel;
-      console.log(i);
-      this.heroService.addRoleCrew(i).subscribe();
+      if (this.selectRoleModel != null)
+      {
+        h.roleCrew = this.selectRoleModel;
+        this.heroService.addRoleCrew(h).subscribe();
+        this.selectRoleModel = null;
+      }
     }
 
 }

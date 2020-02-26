@@ -48,6 +48,7 @@ import { MyCrewComponent } from './_components/my-crew/my-crew.component';
     NbSidebarModule,
     ReactiveFormsModule,
     FormsModule,
+    ReactiveFormsModule,
     NbDialogModule.forRoot()
   ],
   providers: [],
