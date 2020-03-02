@@ -53,6 +53,9 @@ export class HeroService {
     return this.httpClient.post<playingHeroModel>(environment.apiEndPoint+'/crew',playingHeroModel);
   }
 
-  //insert(model: playingHeroModel)
+  nullifyRoleCrew(playingHeroModel : playingHeroModel)
+  {
+    return this.httpClient.post<playingHeroModel>(environment.apiEndPoint+'/crew/reset', playingHeroModel);
+  }
 
 }

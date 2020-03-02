@@ -6,6 +6,7 @@ import { UserService } from 'src/app/_services/user.service';
 import { userModel } from 'src/app/_models/user';
 import { playingHeroModel } from 'src/app/_models/playingHero';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 
 @Component({
   selector: 'app-heroes',
@@ -29,6 +30,7 @@ export class HeroesComponent implements OnInit {
   ngOnInit(): void {
     this.imgUrl = "../../../assets/images/";
     this.currentUser = this.userService.getToken();
+    let userId = this.currentUser.id;
     this.heroService.heroContext$.subscribe(list => {
       this.allHeroes = list;
     });
@@ -36,12 +38,15 @@ export class HeroesComponent implements OnInit {
     this.heroService.playerHeroContext$.subscribe(list => {
       this.myHeroes = list;
     });
-
+    this.heroService.getHeroesByPlayerId(userId);
+    this.userService.getCurrentUser(userId);
   }
-
+  
   buy(heroId: number, userId: number): void {
     userId = this.currentUser.id;
-    this.httpClient.post<null>('http://localhost:8080/shop/buy/' + heroId + "/" + userId, null).subscribe();
+    this.httpClient.post<null>('http://localhost:8080/shop/buy/' + heroId + "/" + userId, null).subscribe(
+      () => this.heroService.getHeroesByPlayerId(userId)
+    );
   }
 
   alreadyowned(name: string): boolean{
@@ -51,6 +56,11 @@ export class HeroesComponent implements OnInit {
       }
     }
     return false;
+  }
+
+  modified(score: number): number{
+    score = 7;
+    return score;
   }
 
 }

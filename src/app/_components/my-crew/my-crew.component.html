@@ -12,12 +12,26 @@
             </nb-card-header>
             <nb-card-body class="center">
                
-                    <nb-select  (selectedChange)="selectRole($event)" required="required" [placeholder]="hero.roleCrew? hero.roleCrew.name : 'new role'">
-                        <nb-option *ngFor="let i of listRole" [value]="i">{{i.name}}</nb-option>
+                    <nb-select  (selectedChange)="selectRole($event)" required="required" [placeholder]="hero.roleCrew? hero.roleCrew.name : 'Choisir Rôle'">
+                        <nb-option *ngFor="let i of listRole"
+                        [value]="i"
+                        [disabled]="isAlreadyUsed(i)">
+                                {{i.name}}
+                        </nb-option>
                     </nb-select>
                     <div>
-                        <button type="submit" nbButton  (click)="addRole(hero)" status="success">Add role</button>
+                        <button type="submit" nbButton  (click)="addRole(hero)" status="success">Assigner</button>
+                        <button type="submit" *ngIf="(hero.roleCrew != null)" nbButton (click)="nullifyRole(hero)">Réinitialiser</button>
                     </div>
+                    <div *ngIf="(hero.roleCrew != null)">
+                        <h4>Bonus d'alignement (équipe) :</h4>
+                            + {{hero.roleCrew.alignmentBonus}} {{hero.faction.faction_alignment}}
+                        <h4>Bonus de compétence (héros) :</h4>
+                            <div *ngFor = "let bonus of hero.roleCrew.bonus">
+                                {{bonus.bonus | strVal}} {{bonus.affected}}
+                            </div>
+                    </div>
+                    
                
                 
             </nb-card-body>

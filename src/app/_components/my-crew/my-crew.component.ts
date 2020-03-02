@@ -30,6 +30,7 @@ export class MyCrewComponent implements OnInit {
       this.imgUrl = "../../../assets/images/";
       this.heroService.playerHeroContext$.subscribe(list => {
         this.myHeroes = list;
+        this.myHeroes.sort((a, b) => (a.id > b.id) ? 1 : -1);
       });
 
       this.heroService.roleCrewContext$.subscribe(list => {
@@ -53,9 +54,33 @@ export class MyCrewComponent implements OnInit {
       if (this.selectRoleModel != null)
       {
         h.roleCrew = this.selectRoleModel;
-        this.heroService.addRoleCrew(h).subscribe();
+        let userId = this.currentUser.id;
+        this.heroService.addRoleCrew(h).subscribe(
+          () => this.heroService.getHeroesByPlayerId(userId)
+        );
         this.selectRoleModel = null;
       }
     }
+
+    nullifyRole(h: playingHeroModel)
+    {
+      h.roleCrew = this.selectRoleModel;
+      let userId = this.currentUser.id;
+      this.heroService.nullifyRoleCrew(h).subscribe(
+        () => this.heroService.getHeroesByPlayerId(userId)
+      );
+      this.selectRoleModel = null;
+    }
+
+    isAlreadyUsed(role: roleCrewModel): boolean{
+      for(let i=0; i<this.myHeroes.length; i++){
+        if(this.myHeroes[i].roleCrew != null){
+          if((this.myHeroes[i].roleCrew.name == role.name) && role.singled){
+            return true;
+        }
+      }
+    }
+    return false;
+  }
 
 }
