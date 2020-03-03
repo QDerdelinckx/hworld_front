@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Optional } from '@angular/core';
 import { HeroService } from 'src/app/_services/hero.service';
 import { UserService } from 'src/app/_services/user.service';
 import { userModel } from 'src/app/_models/user';
 import { playingHeroModel } from 'src/app/_models/playingHero';
 import { skillModel } from 'src/app/_models/skill';
+import { bonusModel } from 'src/app/_models/bonus';
 
 @Component({
   selector: 'app-myheroes',
@@ -33,17 +34,35 @@ export class MyheroesComponent implements OnInit {
   }
 
   modified(hero: playingHeroModel, skill: skillModel): number{
-    let roleBonusName = hero.roleCrew.name;
-    let roleBonus = hero.roleCrew.bonus;
     let score = skill.score;
-    let skillArch1 = skill.archetype1;
-    let skillArch2 = skill.archetype2;
-    for(let i =0; i<hero.skills.length; i++){
-      if((roleBonus[i].affected ==  skillArch1) || (roleBonus[i].affected == skillArch2)){
-        score = score + roleBonus[i].bonus;
+    if(hero.roleCrew !== null){
+      let roleBonusName = hero.roleCrew.name;
+      let roleBonus = hero.roleCrew.bonus;
+      let skillArch1 = skill.archetype1;
+      let skillArch2 = skill.archetype2;
+      for(let i =0; i<hero.roleCrew.bonus.length; i++){
+        if((roleBonus[i].affected ==  skillArch1) || (roleBonus[i].affected == skillArch2)){
+          score = score + roleBonus[i].bonus;
+        } 
       }
     }
     return score;
+  }
+
+  testedForDumping(hero: playingHeroModel, skill: skillModel): string{
+    let score = skill.score;
+    if(hero.roleCrew !== null){
+      let roleBonusName = hero.roleCrew.name;
+      let roleBonus = hero.roleCrew.bonus;
+      let skillArch1 = skill.archetype1;
+      let skillArch2 = skill.archetype2;
+      for(let i =0; i<hero.roleCrew.bonus.length; i++){
+        if((roleBonus[i].affected !=  skillArch1) && (roleBonus[i].affected != skillArch2)){
+          return roleBonus[i].affected
+        } 
+      }
+    }
+    return null;
   }
 
 }

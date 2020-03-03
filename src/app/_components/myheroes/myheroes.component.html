@@ -37,13 +37,20 @@
                             {{skill.name}}
                         </div>
                         <div class="score">
-                            {{skill.score}}
+                            {{modified(hero, skill)}}
                         </div>
                         <div class="mini">
                             {{skill.archetype1}}
                         </div>
                         <div class="mini">
                             {{skill.archetype2}}
+                        </div>
+                    </div>
+                </div>
+                <div class="skills spaced">
+                    <div *ngFor = "let skill of hero.skills">
+                        <div>    
+                           {{testedForDumping(hero, skill)}}
                         </div>
                     </div>
                 </div>
