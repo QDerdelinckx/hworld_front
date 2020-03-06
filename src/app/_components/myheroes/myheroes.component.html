@@ -36,7 +36,8 @@
                         <div class="important mini">
                             {{skill.name}}
                         </div>
-                        <div class="score">
+                        <div
+                            [ngClass]="{'modified': modified(hero, skill) > skill.score}">
                             {{modified(hero, skill)}}
                         </div>
                         <div class="mini">
@@ -47,11 +48,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="skills spaced">
-                    <div *ngFor = "let skill of hero.skills">
-                        <div>    
-                           {{testedForDumping(hero, skill)}}
-                        </div>
+                <div class="bottompadded" *ngIf = "hero.roleCrew != null">
+                    <h4>Bonus de rôle :</h4>
+                    <div *ngFor = "let bonus of hero.roleCrew.bonus">
+                        {{bonus.bonus | strVal}} {{bonus.affected}}
                     </div>
                 </div>
                 <div>

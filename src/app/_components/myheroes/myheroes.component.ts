@@ -34,6 +34,7 @@ export class MyheroesComponent implements OnInit {
   }
 
   modified(hero: playingHeroModel, skill: skillModel): number{
+    hero.addedBonus = [];
     let score = skill.score;
     if(hero.roleCrew !== null){
       let roleBonusName = hero.roleCrew.name;
@@ -43,26 +44,14 @@ export class MyheroesComponent implements OnInit {
       for(let i =0; i<hero.roleCrew.bonus.length; i++){
         if((roleBonus[i].affected ==  skillArch1) || (roleBonus[i].affected == skillArch2)){
           score = score + roleBonus[i].bonus;
-        } 
+        } else {
+          hero.addedBonus.push(roleBonus[i]);
+        }
       }
     }
     return score;
   }
 
-  testedForDumping(hero: playingHeroModel, skill: skillModel): string{
-    let score = skill.score;
-    if(hero.roleCrew !== null){
-      let roleBonusName = hero.roleCrew.name;
-      let roleBonus = hero.roleCrew.bonus;
-      let skillArch1 = skill.archetype1;
-      let skillArch2 = skill.archetype2;
-      for(let i =0; i<hero.roleCrew.bonus.length; i++){
-        if((roleBonus[i].affected !=  skillArch1) && (roleBonus[i].affected != skillArch2)){
-          return roleBonus[i].affected
-        } 
-      }
-    }
-    return null;
-  }
+  
 
 }

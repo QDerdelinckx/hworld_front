@@ -1,6 +1,7 @@
 import { skillModel } from './skill';
 import { factionModel } from './faction';
 import { roleCrewModel } from './roleCrew';
+import { bonusModel } from './bonus';
 
 export interface playingHeroModel {
   id: number;
@@ -15,4 +16,5 @@ export interface playingHeroModel {
   skills: skillModel[];
   faction: factionModel;
   roleCrew : roleCrewModel;
+  addedBonus: bonusModel[];
 }

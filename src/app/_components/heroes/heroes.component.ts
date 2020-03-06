@@ -58,9 +58,4 @@ export class HeroesComponent implements OnInit {
     return false;
   }
 
-  modified(score: number): number{
-    score = 7;
-    return score;
-  }
-
 }
